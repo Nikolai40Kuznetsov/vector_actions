@@ -26,7 +26,7 @@ class Vector3D:
                         other.x * self.z - self.x * other.z,
                         self.x * other.y - other.x * self.y)
     
-    def __mul__(self, other): #скалярное произведение
+    def __mul__(self, other): #скалярное произведение (знак *)
         q = (self.x * other.x + self.y * other.y + self.z * other.z)
         return (q * q / ((self.x * self.x + self.y * self.y + self.z * self.z) * (other.x * other.x + other.y * other.y + other.z * other.z)) ** 0.5)
     
