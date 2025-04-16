@@ -61,11 +61,12 @@ class Matrix4:
             col_list = [1, 2, 3, 4]
             col_list.remove(column_pair[i][0])
             col_list.remove(column_pair[i][1])
+            a11 = self.rows[row_list[0]-1][col_list[0]-1]
+            a12 = self.rows[row_list[0]-1][col_list[1]-1]
+            a21 = self.rows[row_list[1]-1][col_list[0]-1]
+            a22 = self.rows[row_list[1]-1][col_list[1]-1]
             items.append((-1)**(row_index_1+row_index_2+column_pair[i][0]+column_pair[i][1]) * 
-                         self.determinant2(self.rows[row_list[0]][col_list[0]], 
-                                           self.rows[row_list[0]][col_list[1]], 
-                                           self.rows[row_list[1]][col_list[0]],
-                                           self.rows[row_list[1]][col_list[1]]))
+                         Matrix4.determinant2(a11, a12, a21, a22))
             determinant4 = sum(items)
             return determinant4
 
@@ -74,6 +75,6 @@ v1 = Vector3D(1, 2, 3)
 v2 = Vector3D(4, 5, 6)
 print(v1 * v2)
 print(v1 @ v2)
-mtr = Matrix4([1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4])
-mtr.minor2(1, 2)
+mtr = Matrix4([5, 1, 2, 7], [3, 0, 0, 2], [1, 3, 4, 5], [2, 0, 0, 3])
+print(mtr.minor2(1, 2))
                     
